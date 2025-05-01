@@ -1,5 +1,13 @@
 # Next.js v15+ Caching Demo
 
+## Contributing
+
+We ❤️ contributions! Please take a look at our [CONTRIBUTING](CONTRIBUTING.md) guide to get started.
+
+## Code of Conduct
+
+This project abides by the [Contributor Covenant](CODE_OF_CONDUCT.md). By participating, you are expected to honor this code.
+
 This repository demonstrates the four core caching mechanisms in Next.js v15+:
 
 1. **Request Memoization** – Deduped fetches within a single render on `/products`.
