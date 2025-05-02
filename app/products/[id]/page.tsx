@@ -6,11 +6,13 @@ interface Props {
 }
 
 export default async function ProductDetailPage({ params }: Props) {
+  // This is the product ID from the URL
+  const { id } = await params;
   // First call to getProduct - makes an API request
-  const product = await getProduct(params.id)
+  const product = await getProduct(id)
 
   // Second call to the same product - uses memoized result
-  const sameProduct = await getProduct(params.id)
+  const sameProduct = await getProduct(id)
 
   // This is just to demonstrate that the product is the same object
   const isSameReference = product === sameProduct
@@ -34,7 +36,7 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="bg-blue-50 p-3 md:p-4 rounded-lg border border-blue-100 mb-6 text-sm md:text-base">
           <h2 className="font-semibold text-blue-800 mb-2">Request Memoization Demo:</h2>
           <p className="text-blue-700">
-            This page calls <code className="bg-blue-100 px-1 rounded">getProduct({params.id})</code> twice, but only
+            This page calls <code className="bg-blue-100 px-1 rounded">getProduct({id})</code> twice, but only
             makes one HTTP request.
           </p>
           <div className="mt-3 p-2 bg-blue-100 rounded">

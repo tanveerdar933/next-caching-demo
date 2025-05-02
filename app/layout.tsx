@@ -7,7 +7,6 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "Next.js v15 Cache Demo",
   description: "Demonstrates Request Memoization, Data Cache, Full Route Cache, and Router Cache",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
