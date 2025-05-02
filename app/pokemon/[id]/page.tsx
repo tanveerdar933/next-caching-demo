@@ -7,12 +7,15 @@ interface Props {
 }
 
 export default async function PokemonDetailPage({ params }: Props) {
-  const pokemon: { id: number; name: string; abilities: string[] } = await getPokemon(params.id)
+  // This is the Pokemon ID from the URL
+  const { id } = await params
+
+  const pokemon: { id: number; name: string; type: string[] } = await getPokemon(id)
 
   return (
     <div className="max-w-3xl mx-auto">
       <div className="mb-4">
-        <Link href="/pokemon" className="text-accent hover:underline flex items-center gap-1 text-sm md:text-base">
+        <Link href="/pokemon" className="text-gray-800 hover:underline flex items-center gap-1 text-sm md:text-base">
           <span>←</span> Back to Pokédex
         </Link>
       </div>
@@ -26,13 +29,14 @@ export default async function PokemonDetailPage({ params }: Props) {
         </div>
 
         <div className="mb-6 md:mb-8">
-          <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Abilities</h2>
+          <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Types</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {pokemon.abilities.map((ability) => (
-              <li key={ability} className="bg-gray-50 p-3 rounded border text-sm md:text-base">
-                {ability}
-              </li>
-            ))}
+            {pokemon?.type?.length ?
+              pokemon?.type?.map((value) => (
+                <li key={value} className="bg-gray-50 p-3 rounded border text-sm md:text-base">
+                  {value}
+                </li>
+              )) : null}
           </ul>
         </div>
 

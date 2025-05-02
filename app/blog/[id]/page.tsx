@@ -6,7 +6,10 @@ interface Props {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post: { title: string; content: string; date: string } = await getBlogPost(params.id)
+  // This is the blog post ID from the URL
+  const { id } = await params
+  // First call to getBlogPost - makes an API request
+  const post: { title: string; content: string; date: string } = await getBlogPost(id)
 
   return (
     <div className="max-w-3xl mx-auto">
